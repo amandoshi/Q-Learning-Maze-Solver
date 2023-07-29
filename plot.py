@@ -25,7 +25,3 @@ def update_plot():
     axis.autoscale_view()
     figure.canvas.draw()
     figure.canvas.flush_events()
-
-def keep_plot():
-    while True:
-        pass

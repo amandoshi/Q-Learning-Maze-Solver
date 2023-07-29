@@ -18,11 +18,12 @@ class Q_Learning:
             np.array([-1, 0])
         ])
 
+        # q-table
         q_table_shape = (self.__maze_width * self.__maze_height, len(self.__actions_lst))
         self.__q_table = np.zeros(q_table_shape, dtype=np.float64)
 
         # q-learning settings
-        self.__num_episodes = 350000
+        self.__num_episodes = 100000
         self.__max_iteration = 150
         self.__exploration_decay_rate = 0.00001
         self.__min_exploration_rate = 0.01
