@@ -11,12 +11,13 @@ def main():
     if option == 't':
         ql = Q_Learning(maze)
         ql.train()
+        ql.save_plot()
         store_q_table(ql.get_q_table())
     elif option == "l":
         qt = load_q_table()
         ql = Q_Learning(maze)
         ql.set_q_table(qt)
-        path = list(ql.simulate())
+        path_iter = ql.simulate()
 
 def load_maze():
     maze_rows = open(maze_filename).read().split("\n")
@@ -31,7 +32,6 @@ def store_q_table(qt):
     file_str = ""
     for row in qt:
         for item in row:
-            print(float(item))
             file_str += str(item) + ","
         file_str += ("\n")
     with open(q_table_filename, "w") as file:

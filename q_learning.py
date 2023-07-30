@@ -1,6 +1,7 @@
 import numpy as np
 import plot
 import random
+import time
 
 class Q_Learning:
     def __init__(self, maze):
@@ -43,6 +44,9 @@ class Q_Learning:
 
         # plot
         self.__plot_rate = 5000
+        self.__plot_img_filename = "plot.png"
+        self.__plot_img_format = "png"
+        self.__plot_img_resolution = 300
         plot.init()
 
     def train(self):
@@ -57,6 +61,9 @@ class Q_Learning:
                 if complete:
                     break
                 self.__current_state = next_state
+
+    def save_plot(self):
+        plot.save_plot(self.__plot_img_filename, self.__plot_img_format, self.__plot_img_resolution)
     
     def simulate(self):
         complete = False

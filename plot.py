@@ -25,3 +25,6 @@ def update_plot():
     axis.autoscale_view()
     figure.canvas.draw()
     figure.canvas.flush_events()
+
+def save_plot(filename, format, resolution):
+    plt.savefig(filename, format=format, dpi=resolution, bbox_inches='tight')
