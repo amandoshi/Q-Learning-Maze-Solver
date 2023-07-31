@@ -7,6 +7,6 @@ Resources:
 * https://github.com/MattChanTK/gym-maze/blob/master/gym_maze/envs/maze_env.py
 * https://github.com/MattChanTK/ai-gym/blob/master/maze_2d/maze_2d_q_learning.py#L103
 
-Progress:
-![plot](https://github.com/amandoshi/Q-Learning-Maze-Solver/assets/54029493/ee55959a-d2a6-4ba0-af51-ed66867ee30e)
-![solve](https://github.com/amandoshi/Q-Learning-Maze-Solver/assets/54029493/02dc695f-b013-4a81-abae-0903e0446a36)
+Images: <br>
+<img src="https://github.com/amandoshi/Q-Learning-Maze-Solver/assets/54029493/edbc1c62-13d0-4067-ad8d-116c8a9fb832" width=700/>
+<img src="https://github.com/amandoshi/Q-Learning-Maze-Solver/assets/54029493/2d93b71b-fa31-495d-a422-18251b324a2a" width=700/>
