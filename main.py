@@ -1,8 +1,9 @@
+from gui import GUI
 import numpy as np
 from q_learning import Q_Learning
 
 # constants
-maze_filename = "mazes/maze_5.csv"
+maze_filename = "mazes/maze_21.csv"
 q_table_filename = "q_table.csv"
 
 def main():
@@ -15,9 +16,11 @@ def main():
         store_q_table(ql.get_q_table())
     elif option == "l":
         qt = load_q_table()
-        ql = Q_Learning(maze)
+        ql = Q_Learning(maze, draw_plot=False)
         ql.set_q_table(qt)
         path_iter = ql.simulate()
+        gui = GUI(maze, path_iter)
+        gui.animate()
 
 def load_maze():
     maze_rows = open(maze_filename).read().split("\n")

@@ -4,7 +4,7 @@ import random
 import time
 
 class Q_Learning:
-    def __init__(self, maze):
+    def __init__(self, maze, draw_plot=True):
         # maze
         self.__maze = maze
         self.__maze_height = len(maze)
@@ -24,8 +24,10 @@ class Q_Learning:
         self.__q_table = np.zeros(q_table_shape, dtype=np.float64)
 
         # q-learning settings
-        self.__num_episodes = 100000
-        self.__max_iteration = 150
+        self.__num_episodes = 300000
+        self.__max_iteration = 100
+        self.__max_iteration_growth_rate = 10000
+        self.__max_iteration_growth_factor = 1.3
         self.__exploration_decay_rate = 0.00001
         self.__min_exploration_rate = 0.01
         self.__discount_factor = 0.8
@@ -47,11 +49,14 @@ class Q_Learning:
         self.__plot_img_filename = "plot.png"
         self.__plot_img_format = "png"
         self.__plot_img_resolution = 300
-        plot.init()
+
+        if draw_plot:
+            plot.init()
 
     def train(self):
         for i in range(self.__num_episodes):
             self.__update_plot(i)
+            self.__update_max_iteration(i)
             self.__current_state = self.__start_state
             for _ in range(self.__max_iteration):
                 action_index = self.__select_action_index(i)
@@ -86,6 +91,11 @@ class Q_Learning:
 
     def set_q_table(self, q_table):
         self.__q_table = q_table
+
+    def __update_max_iteration(self, episode):
+        if episode % self.__max_iteration_growth_rate != 0 and len(list(self.simulate())) > 0.9 * self.__max_iteration:
+            self.__max_iteration *= self.__max_iteration_growth_factor
+            self.__max_iteration = int(self.__max_iteration)
 
     def __update_plot(self, curr_episode):
         if curr_episode % self.__plot_rate != 0:
